@@ -237,6 +237,60 @@ Prefix  Mask                Block size   Usable hosts
 - A **switch** learns MAC addresses and forwards traffic only to the correct port — efficient and collision-free per port.
 
 ---
+# Network Hardware Guide: Hubs vs. Switches
+
+This guide explains the fundamental differences between Layer 1 and Layer 2 interconnect devices.
+
+---
+
+## 1. The Hub (Physical Layer)
+A **Hub** is a non-intelligent device that acts as a multi-port repeater. It operates at **Layer 1 (Physical)** of the OSI model.
+
+### How it works:
+* **Broadcasting:** When a Hub receives a data frame on one port, it duplicates that frame and sends it out to **every other port**.
+* **Shared Bandwidth:** All devices connected to a hub share the same total bandwidth.
+* **Half-Duplex:** Devices can only send OR receive at one time, not both.
+
+### The Problem: Collisions
+Because everyone shares the same "wire" logic, if two devices talk at once, a **collision** occurs. Hubs use **CSMA/CD** to manage these crashes, which slows down the network.
+
+---
+
+## 2. The Switch (Data Link Layer)
+A **Switch** is an intelligent device that operates at **Layer 2 (Data Link)**. It uses hardware addresses (MAC addresses) to make forwarding decisions.
+
+### How it works:
+* **MAC Learning:** The switch builds a **MAC Address Table** (CAM Table). It records which device is on which physical port.
+* **Unicast Forwarding:** The switch checks the destination MAC and sends the frame **only** to the specific port where that device lives.
+* **Full-Duplex:** Each port is its own "private hallway," allowing simultaneous send/receive without collisions.
+
+---
+
+## 3. Comparison Table
+
+| Feature | Hub | Switch |
+| :--- | :--- | :--- |
+| **OSI Layer** | **Layer 1** (Physical) | **Layer 2** (Data Link) |
+| **Intelligence** | None (Passive) | High (Active Learning) |
+| **Data Unit** | Bits | Frames |
+| **Transmission** | Broadcast (One-to-All) | Unicast (One-to-One) |
+| **Collision Domain** | One shared domain | One domain per port |
+| **Speed** | Slow (Shared) | Fast (Dedicated per port) |
+
+---
+
+## 4. Position in the OSI Model
+
+1. **Layer 3 (Network):** **Routers** (Logic: IP Addresses)
+2. **Layer 2 (Data Link):** **Switches** (Logic: MAC Addresses)
+3. **Layer 1 (Physical):** **Hubs**, Cables, Repeaters (Logic: Electrical Signals/Bits)
+
+---
+
+### Key Takeaway
+* **Hubs** shout at everyone. They are "dumb" and inefficient.
+* **Switches** talk to specific devices. They are "smart" and maintain private communication.
+---
 
 ### Protocols & Ports
 

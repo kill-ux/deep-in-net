@@ -5,6 +5,8 @@ foundational concepts in network design, device configuration, protocol
 behavior, and the OSI model — from simple peer-to-peer connections to
 multi-subnet routed architectures.
 
+![image](https://learn.zone01oujda.ma/api/content/root/01-edu_module/content/deep-in-net/pictures/serverRoomMeme.jpg)
+
 ---
 
 ## Table of Contents
@@ -25,6 +27,8 @@ multi-subnet routed architectures.
 
 The OSI model describes the 7 layers of network communication.
 Every protocol and device maps to a specific layer.
+
+<img src="https://datageneral.co/wp-content/uploads/2023/12/Capas-modelo-OSI.png" width="40%">
 
 ```
 Layer 7 — Application   →  HTTP, HTTPS, FTP, DNS, DHCP

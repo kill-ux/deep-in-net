@@ -36,11 +36,11 @@ Layer 2 — Data Link     →  MAC addresses, Switch, Frames
 Layer 1 — Physical      →  Cables, Hub, Bits
 ```
 
-| Device   | OSI Layer       | Works with     |
-|----------|-----------------|----------------|
-| Hub      | Layer 1         | Bits           |
-| Switch   | Layer 2         | MAC addresses  |
-| Router   | Layer 3         | IP addresses   |
+| Device | OSI Layer | Works with    |
+| ------ | --------- | ------------- |
+| Hub    | Layer 1   | Bits          |
+| Switch | Layer 2   | MAC addresses |
+| Router | Layer 3   | IP addresses  |
 
 ---
 
@@ -57,10 +57,10 @@ For communication to work: TX on one side must connect to RX on the other.
 
 ### Port types
 
-| Type  | Device              | Transmits on | Receives on |
-|-------|---------------------|--------------|-------------|
-| MDI   | PC, Laptop          | 1 & 2        | 3 & 6       |
-| MDI-X | Switch, Router, Hub | 3 & 6        | 1 & 2       |
+| Type  | Device               | Transmits on | Receives on |
+| ----- | -------------------- | ------------ | ----------- |
+| MDI   | PC, Laptop  , Router | 1 & 2        | 3 & 6       |
+| MDI-X | Switch, Hub          | 3 & 6        | 1 & 2       |
 
 ### The rule
 
@@ -73,7 +73,7 @@ MDI-X ←→ MDI-X →  Crossover         (same type, cable does the swap)
 ### Straight-through
 
 ```
-PC (MDI)                   Switch/Router (MDI-X)
+PC (MDI)                   Switch (MDI-X)
 TX+ pin1 ────────────────── pin1 RX+
 TX− pin2 ────────────────── pin2 RX−
 RX+ pin3 ────────────────── pin3 TX+
@@ -92,13 +92,13 @@ RX− pin6 ──────────────────  pin2 TX−
 
 ### Reference
 
-| Connection      | Cable            |
-|-----------------|------------------|
-| PC → Switch     | Straight-through |
-| PC → Router     | Straight-through |
-| PC → PC         | Crossover        |
-| Switch → Switch | Crossover        |
-| Switch → Router | Crossover        |
+| Connection      | Cable                  |
+| --------------- | ---------------------- |
+| PC → Switch     | Straight-through       |
+| PC → Router     | Crossover              |
+| PC → PC         | Crossover              |
+| Switch → Switch | Crossover              |
+| Switch → Router | Straight-through       |
 | Modern devices  | Either (Auto-MDI/MDIX) |
 
 ### Auto-MDI/MDIX
@@ -239,17 +239,17 @@ Prefix  Mask                 Block   Usable
 
 ### Protocol & Port Reference
 
-| Protocol | Port  | Transport | Layer | Purpose                        |
-|----------|-------|-----------|-------|-------------------------------|
-| DHCP     | 67/68 | UDP       | L7    | Automatic IP assignment        |
-| DNS      | 53    | UDP/TCP   | L7    | Name → IP resolution           |
-| HTTP     | 80    | TCP       | L7    | Web (unencrypted)              |
-| HTTPS    | 443   | TCP       | L7    | Web (TLS encrypted)            |
-| FTP      | 20/21 | TCP       | L7    | File transfer                  |
-| RIP      | 520   | UDP       | L7    | Dynamic routing (small nets)   |
-| ARP      | —     | —         | L2/3  | IP → MAC resolution            |
-| ICMP     | —     | IP proto  | L3    | Ping, traceroute, errors       |
-| OSPF     | —     | IP 89     | L3    | Dynamic routing (enterprise)   |
+| Protocol | Port  | Transport | Layer | Purpose                      |
+| -------- | ----- | --------- | ----- | ---------------------------- |
+| DHCP     | 67/68 | UDP       | L7    | Automatic IP assignment      |
+| DNS      | 53    | UDP/TCP   | L7    | Name → IP resolution         |
+| HTTP     | 80    | TCP       | L7    | Web (unencrypted)            |
+| HTTPS    | 443   | TCP       | L7    | Web (TLS encrypted)          |
+| FTP      | 20/21 | TCP       | L7    | File transfer                |
+| RIP      | 520   | UDP       | L7    | Dynamic routing (small nets) |
+| ARP      | —     | —         | L2/3  | IP → MAC resolution          |
+| ICMP     | —     | IP proto  | L3    | Ping, traceroute, errors     |
+| OSPF     | —     | IP 89     | L3    | Dynamic routing (enterprise) |
 
 ### TCP vs UDP
 
@@ -613,12 +613,12 @@ PPP   →  open standard, works between any vendor, supports auth
 
 **Goal:** DHCP assigns IPs. DNS resolves names. HTTPS serves hello page. FTP accepts uploads.
 
-| Server | IP            | Service              |
-|--------|---------------|----------------------|
-| DHCP   | 192.168.1.1   | IP assignment        |
-| DNS    | 192.168.1.2   | Name resolution      |
-| HTTPS  | 192.168.1.99  | Web (HTTP disabled)  |
-| FTP    | 192.168.1.4   | File transfer        |
+| Server | IP           | Service             |
+| ------ | ------------ | ------------------- |
+| DHCP   | 192.168.1.1  | IP assignment       |
+| DNS    | 192.168.1.2  | Name resolution     |
+| HTTPS  | 192.168.1.99 | Web (HTTP disabled) |
+| FTP    | 192.168.1.4  | File transfer       |
 
 **DNS records:**
 ```
@@ -681,11 +681,11 @@ Same as Exercise 5 with more devices per switch.
 
 **Goal:** All PCs across 3 subnets can reach each other.
 
-| Subnet   | Network          | Gateway       |
-|----------|------------------|---------------|
-| Subnet 1 | 192.168.1.0/24   | 192.168.1.1   |
-| Subnet 2 | 192.168.2.0/24   | 192.168.2.1   |
-| Subnet 3 | 192.168.3.0/24   | 192.168.3.1   |
+| Subnet   | Network        | Gateway     |
+| -------- | -------------- | ----------- |
+| Subnet 1 | 192.168.1.0/24 | 192.168.1.1 |
+| Subnet 2 | 192.168.2.0/24 | 192.168.2.1 |
+| Subnet 3 | 192.168.3.0/24 | 192.168.3.1 |
 
 Each router needs static routes to both other subnets.
 
@@ -730,7 +730,6 @@ deep-in-net/
 ├── ex06.pkt    static routing two routers
 ├── ex07.pkt    multi-device routing
 ├── ex08.pkt    three-subnet full mesh
-├── bonus.pkt   OSPF dynamic routing
 └── README.md   this file
 ```
 

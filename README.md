@@ -691,33 +691,6 @@ Each router needs static routes to both other subnets.
 
 ---
 
-## Bonus
-
-**OSPF dynamic routing** replacing static routes from Exercise 8.
-
-Instead of manually adding routes, routers discover each other and
-build the routing table automatically using OSPF.
-
-```
-router ospf 1
- network 192.168.1.0 0.0.0.255 area 0
- network 192.168.2.0 0.0.0.255 area 0
- network 192.168.3.0 0.0.0.255 area 0
-```
-
-**Verify:**
-```
-show ip ospf neighbor     routers found each other?
-show ip route             O = OSPF learned routes
-```
-
-OSPF routes appear as `O` in the routing table:
-```
-O  192.168.2.0/24 [110/2] via 10.0.0.2
-```
-
----
-
 ## File Structure
 
 ```

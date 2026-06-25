@@ -1,12 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test github page</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>deep-in-net 🌐 — Cisco Packet Tracer Networking</title>
+<meta name="description" content="Hands-on networking project covering OSI model, devices, subnetting, routing and protocols via Cisco Packet Tracer." />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Hello from GitHub Pages!</h1>
-    <p>This site is hosted for free on GitHub.</p>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+    deep-in-net
+  </div>
+  <ul class="nav-links">
+    <li><a href="#osi">OSI</a></li>
+    <li><a href="#cables">Cables</a></li>
+    <li><a href="#devices">Devices</a></li>
+    <li><a href="#addressing">Subnetting</a></li>
+    <li><a href="#protocols">Protocols</a></li>
+    <li><a href="#routing">Routing</a></li>
+    <li><a href="#exercises">Exercises</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+    Cisco Packet Tracer · 8 exercises
+  </div>
+  <h1>
+    <span class="hl-green">deep</span>-in-<span class="hl-blue">net</span> 🌐
+  </h1>
+  <p class="hero-sub">
+    Hands-on networking from peer-to-peer connections to three-subnet routed architectures — covering OSI layers, protocols, subnetting, and more.
+  </p>
+
+  <div style="display:flex;align-items:center;gap:10px;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 20px;max-width:380px;margin:0 auto 2rem;animation:fadeDown .5s .25s ease both;">
+    <span style="color:var(--accent2)">Router0#</span>
+    <span id="typed-cmd" style="color:var(--text)"></span>
+    <span style="color:var(--muted);animation:none;opacity:.7">|</span>
+  </div>
+
+  <div class="hero-actions">
+    <a href="https://github.com/kill-ux/deep-in-net" class="btn btn-primary" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.92.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      View on GitHub
+    </a>
+    <a href="#exercises" class="btn btn-secondary">
+      Browse exercises ↓
+    </a>
+  </div>
+</header>
+
+<!-- ─── MAIN CONTENT ─── -->
+<main class="content">
+
+  <!-- ─── OSI ─── -->
+  <section class="section" id="osi">
+    <div class="section-eyebrow">foundation</div>
+    <h2 class="section-title">OSI Model</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">The OSI model maps every protocol and device to one of 7 layers. Understanding which layer something operates at tells you exactly how it behaves.</p>
+
+    <div class="osi-stack" aria-label="OSI layers from 7 to 1">
+      <div class="osi-layer l7">
+        <div class="osi-num">7</div>
+        <div class="osi-name">Application</div>
+        <div class="osi-proto">HTTP · HTTPS · FTP · DNS · DHCP</div>
+      </div>
+      <div class="osi-layer l6">
+        <div class="osi-num">6</div>
+        <div class="osi-name">Presentation</div>
+        <div class="osi-proto">TLS/SSL encryption</div>
+      </div>
+      <div class="osi-layer l5">
+        <div class="osi-num">5</div>
+        <div class="osi-name">Session</div>
+        <div class="osi-proto">session management</div>
+      </div>
+      <div class="osi-layer l4">
+        <div class="osi-num">4</div>
+        <div class="osi-name">Transport</div>
+        <div class="osi-proto">TCP · UDP · ports</div>
+      </div>
+      <div class="osi-layer l3">
+        <div class="osi-num">3</div>
+        <div class="osi-name">Network</div>
+        <div class="osi-proto">IP · ICMP · ARP · Router</div>
+      </div>
+      <div class="osi-layer l2">
+        <div class="osi-num">2</div>
+        <div class="osi-name">Data Link</div>
+        <div class="osi-proto">MAC addresses · Switch · Frames</div>
+      </div>
+      <div class="osi-layer l1">
+        <div class="osi-num">1</div>
+        <div class="osi-name">Physical</div>
+        <div class="osi-proto">Cables · Hub · Bits</div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1.5rem;">
+      <table>
+        <thead><tr><th>Device</th><th>OSI Layer</th><th>Works with</th></tr></thead>
+        <tbody>
+          <tr><td>Hub</td><td>Layer 1</td><td>Bits</td></tr>
+          <tr><td>Switch</td><td>Layer 2</td><td>MAC addresses</td></tr>
+          <tr><td>Router</td><td>Layer 3</td><td>IP addresses</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─── CABLES ─── -->
+  <section class="section" id="cables">
+    <div class="section-eyebrow">physical</div>
+    <h2 class="section-title">Cables</h2>
+
+    <h3>Port types — MDI vs MDI-X</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Device</th><th>Transmits on</th><th>Receives on</th></tr></thead>
+        <tbody>
+          <tr><td>MDI</td><td>PC · Laptop · Router</td><td>1 &amp; 2</td><td>3 &amp; 6</td></tr>
+          <tr><td>MDI-X</td><td>Switch · Hub</td><td>3 &amp; 6</td><td>1 &amp; 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The rule</h3>
+    <pre>MDI  ←→ MDI-X  →  Straight-through   (opposite types)
+MDI  ←→ MDI    →  Crossover           (same type)
+MDI-X ←→ MDI-X →  Crossover           (same type)</pre>
+
+    <h3>Quick reference</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Connection</th><th>Cable</th></tr></thead>
+        <tbody>
+          <tr><td>PC → Switch</td><td>Straight-through</td></tr>
+          <tr><td>PC → Router</td><td>Crossover</td></tr>
+          <tr><td>PC → PC</td><td>Crossover</td></tr>
+          <tr><td>Switch → Switch</td><td>Crossover</td></tr>
+          <tr><td>Switch → Router</td><td>Straight-through</td></tr>
+          <tr><td>Modern devices</td><td>Either (Auto-MDI/MDIX)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─── DEVICES ─── -->
+  <section class="section" id="devices">
+    <div class="section-eyebrow">layer 1–3</div>
+    <h2 class="section-title">Devices</h2>
+
+    <h3>Hub — Layer 1</h3>
+    <p style="color:var(--muted)">Dumb repeater — any signal received is copied to <em>all</em> other ports. Half-duplex. One shared collision domain. Uses CSMA/CD.</p>
+    <pre>PC-A sends to PC-C  →  hub floods to PC-B, PC-C, PC-D
+PC-B and PC-D must discard it  →  waste + collisions</pre>
+
+    <h3>Switch — Layer 2</h3>
+    <p style="color:var(--muted)">Learns MAC addresses and forwards frames only to the correct port. Full-duplex. Each port is its own collision domain.</p>
+    <pre>PC-A sends to PC-C  →  switch sends ONLY to PC-C
+PC-B and PC-D hear nothing  →  efficient + private</pre>
+
+    <h3>Router — Layer 3</h3>
+    <p style="color:var(--muted)">Connects different networks and forwards packets based on destination IP.</p>
+    <pre>1. Packet arrives with destination IP
+2. Router checks routing table (longest prefix match)
+3. Decrements TTL by 1
+4. Rewrites MAC address  (src=router, dst=next hop)
+5. Forwards out correct interface
+
+IP address NEVER changes hop to hop.
+MAC address changes at EVERY hop.</pre>
+  </section>
+
+  <!-- ─── SUBNETTING ─── -->
+  <section class="section" id="addressing">
+    <div class="section-eyebrow">ip addressing</div>
+    <h2 class="section-title">IP Addressing &amp; Subnetting</h2>
+
+    <h3>Subnet formula</h3>
+    <pre>Block size  =  2^(32 - prefix)
+Usable IPs  =  block size - 2
+Network     =  floor(IP ÷ block size) × block size
+Broadcast   =  network + block size - 1</pre>
+
+    <h3>Common prefix reference</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Prefix</th><th>Mask</th><th>Block</th><th>Usable</th></tr></thead>
+        <tbody>
+          <tr><td>/24</td><td>255.255.255.0</td><td>256</td><td>254</td></tr>
+          <tr><td>/26</td><td>255.255.255.192</td><td>64</td><td>62</td></tr>
+          <tr><td>/27</td><td>255.255.255.224</td><td>32</td><td>30</td></tr>
+          <tr><td>/28</td><td>255.255.255.240</td><td>16</td><td>14</td></tr>
+          <tr><td>/29</td><td>255.255.255.248</td><td>8</td><td>6</td></tr>
+          <tr><td>/30</td><td>255.255.255.252</td><td>4</td><td>2</td></tr>
+          <tr><td>/32</td><td>255.255.255.255</td><td>1</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Subnet calculator</h3>
+    <div class="calc-card">
+      <div class="calc-row">
+        <input class="calc-input" id="cidr-input" type="text" placeholder="e.g. 111.111.111.83/29" spellcheck="false" />
+        <button class="calc-btn" onclick="calcSubnet()">Calculate</button>
+      </div>
+      <pre class="calc-result" id="calc-result"></pre>
+    </div>
+  </section>
+
+  <!-- ─── PROTOCOLS ─── -->
+  <section class="section" id="protocols">
+    <div class="section-eyebrow">layer 3–7</div>
+    <h2 class="section-title">Protocols</h2>
+
+    <div class="proto-grid">
+      <span class="proto-badge pb-l7">DHCP :67/68 UDP</span>
+      <span class="proto-badge pb-l7">DNS :53 UDP/TCP</span>
+      <span class="proto-badge pb-l7">HTTP :80 TCP</span>
+      <span class="proto-badge pb-l7">HTTPS :443 TCP</span>
+      <span class="proto-badge pb-l7">FTP :20/21 TCP</span>
+      <span class="proto-badge pb-l7">RIP :520 UDP</span>
+      <span class="proto-badge pb-l3">ICMP</span>
+      <span class="proto-badge pb-l3">OSPF IP/89</span>
+      <span class="proto-badge pb-l2">ARP L2/3</span>
+    </div>
+
+    <h3>TCP vs UDP</h3>
+    <pre>TCP  →  reliable, ordered, connection-oriented
+         confirms every packet  →  HTTP, HTTPS, FTP
+
+UDP  →  fast, no guarantee, connectionless
+         fire and forget  →  DHCP, DNS, RIP</pre>
+
+    <h3>ARP — IP → MAC</h3>
+    <pre>PC checks ARP cache  →  not found
+PC broadcasts: "Who has 192.168.1.20?"   (FF:FF:FF:FF:FF:FF)
+Target replies: "I do — AA:BB:CC:DD:EE:FF"  (unicast)
+PC stores in ARP cache  →  sends frame
+
+Same subnet  →  ARP for destination IP
+Other subnet →  ARP for default gateway IP</pre>
+
+    <h3>ICMP types</h3>
+    <pre>Type 0   Echo Reply              →  ping response
+Type 8   Echo Request            →  ping request
+Type 3   Destination Unreachable →  cannot reach host
+Type 11  Time Exceeded           →  TTL = 0 (traceroute)</pre>
+
+    <h3>DHCP — DORA</h3>
+    <pre>D — DISCOVER    broadcast  "I need an IP"          src=0.0.0.0
+O — OFFER       reply      "I offer 192.168.1.10"
+R — REQUEST     broadcast  "I accept 192.168.1.10"
+A — ACKNOWLEDGE reply      "It's yours"</pre>
+
+    <h3>DNS record types</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Record</th><th>Maps</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>domain → IPv4</td><td>main address</td></tr>
+          <tr><td>CNAME</td><td>alias → name</td><td>www → domain</td></tr>
+          <tr><td>MX</td><td>domain → mail</td><td>email routing</td></tr>
+          <tr><td>PTR</td><td>IP → domain</td><td>reverse lookup</td></tr>
+          <tr><td>TXT</td><td>domain → text</td><td>SPF, DKIM</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>TLS handshake</h3>
+    <pre>1. Client Hello  →  supported versions + ciphers
+2. Server Hello  →  chosen cipher + certificate
+3. Verify cert   →  check CA, domain, expiry
+4. Key exchange  →  encrypted pre-master secret
+5. Session key   →  both sides derive same key independently
+6. Finished      →  tunnel confirmed, data flows</pre>
+
+    <h3>RIP vs OSPF</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Protocol</th><th>Type</th><th>Metric</th><th>Max hops</th><th>Port</th></tr></thead>
+        <tbody>
+          <tr><td>RIP</td><td>Distance vector</td><td>hop count</td><td>15</td><td>UDP 520</td></tr>
+          <tr><td>OSPF</td><td>Link state</td><td>bandwidth cost</td><td>unlimited</td><td>IP 89</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─── ROUTING ─── -->
+  <section class="section" id="routing">
+    <div class="section-eyebrow">layer 3</div>
+    <h2 class="section-title">Routing</h2>
+
+    <h3>Static vs Dynamic</h3>
+    <pre>Static   →  admin adds routes manually, simple, no overhead
+             does NOT adapt if a link fails
+
+Dynamic  →  routers share routes automatically (RIP or OSPF)
+             adapts when topology changes</pre>
+
+    <h3>Serial links — DCE and DTE</h3>
+    <pre>DCE  →  provides clock signal  (ISP side in real life)
+DTE  →  receives clock         (customer router)
+
+In Packet Tracer: clock icon = DCE  →  must set clock rate
+  clock rate 64000   =  64 Kbps
+  no shutdown        =  turn interface ON  (all OFF by default)</pre>
+
+    <h3>OSPF wildcard masks</h3>
+    <pre>Wildcard = inverse of subnet mask
+255.255.255.0   →  0.0.0.255
+255.255.255.252 →  0.0.0.3</pre>
+  </section>
+
+  <!-- ─── EXERCISES ─── -->
+  <section class="section" id="exercises">
+    <div class="section-eyebrow">packet tracer</div>
+    <h2 class="section-title">Exercises</h2>
+    <p style="color:var(--muted);margin-bottom:1.5rem;">Eight progressive labs from a direct PC link to a three-subnet full mesh. Each <code>.pkt</code> file is in the repository root.</p>
+
+    <div class="ex-grid">
+
+      <div class="ex-card">
+        <div class="ex-num">EX01.PKT</div>
+        <h4>Direct PC Communication</h4>
+        <p>3 pairs of PCs connected directly. Crossover cables, static IPs, no gateway needed.</p>
+        <div class="ex-tags">
+          <span class="tag">crossover</span>
+          <span class="tag">/24</span>
+          <span class="tag">/29</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex01.pkt" target="_blank" rel="noopener">↓ Download ex01.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX02.PKT</div>
+        <h4>Switch vs Hub</h4>
+        <p>5 PCs on a 2960-24TT switch vs 5 PCs on a hub — observe unicast vs flooding.</p>
+        <div class="ex-tags">
+          <span class="tag">switch</span>
+          <span class="tag">hub</span>
+          <span class="tag">/27 /29</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex02.pkt" target="_blank" rel="noopener">↓ Download ex02.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX03.PKT</div>
+        <h4>Network Services</h4>
+        <p>DHCP, DNS, HTTPS, and FTP servers on one switch. PCs auto-configure and browse.</p>
+        <div class="ex-tags">
+          <span class="tag">DHCP</span>
+          <span class="tag">DNS</span>
+          <span class="tag">HTTPS</span>
+          <span class="tag">FTP</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex03.pkt" target="_blank" rel="noopener">↓ Download ex03.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX04.PKT</div>
+        <h4>Router Basics</h4>
+        <p>Two PCs on different /30 subnets connected through a single 1841 router.</p>
+        <div class="ex-tags">
+          <span class="tag">router</span>
+          <span class="tag">/30</span>
+          <span class="tag">gateway</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex04.pkt" target="_blank" rel="noopener">↓ Download ex04.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX05.PKT</div>
+        <h4>Two Subnets via Router</h4>
+        <p>Two switches on a 2911 router — /29 and /27 subnets routing cross-subnet traffic.</p>
+        <div class="ex-tags">
+          <span class="tag">2911</span>
+          <span class="tag">/29</span>
+          <span class="tag">/27</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex05.pkt" target="_blank" rel="noopener">↓ Download ex05.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX06.PKT</div>
+        <h4>Static Routing</h4>
+        <p>Two routers linked by a serial WAN with DCE/DTE. Static routes bridge both subnets.</p>
+        <div class="ex-tags">
+          <span class="tag">serial</span>
+          <span class="tag">DCE/DTE</span>
+          <span class="tag">ip route</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex06.pkt" target="_blank" rel="noopener">↓ Download ex06.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX07.PKT</div>
+        <h4>Multi-device Routing</h4>
+        <p>Multiple PCs and a laptop across two routers with a serial WAN link and two switches.</p>
+        <div class="ex-tags">
+          <span class="tag">multi-device</span>
+          <span class="tag">serial</span>
+          <span class="tag">/24</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex07.pkt" target="_blank" rel="noopener">↓ Download ex07.pkt</a>
+      </div>
+
+      <div class="ex-card">
+        <div class="ex-num">EX08.PKT</div>
+        <h4>Three-Subnet Full Mesh</h4>
+        <p>Three routers, three switches, three subnets, two DHCP servers. Full static routing mesh.</p>
+        <div class="ex-tags">
+          <span class="tag">full mesh</span>
+          <span class="tag">/26 /28 /24</span>
+          <span class="tag">DHCP</span>
+        </div>
+        <a class="ex-link" href="https://github.com/kill-ux/deep-in-net/raw/main/ex08.pkt" target="_blank" rel="noopener">↓ Download ex08.pkt</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="quote">
+    "Networking plays a critical role in various IT specialties, and is particularly essential for cloud and DevOps engineering. Be curious and never stop searching!"
+  </div>
+
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>kill-ux / deep-in-net &nbsp;·&nbsp; <a href="https://github.com/kill-ux/deep-in-net" target="_blank" rel="noopener">github.com/kill-ux/deep-in-net</a></p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
